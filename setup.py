@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='crail',
-    version='0.0.0',
+    version='0.0.1',
     description='Crayon rails online helper',
     url='https://github.com/dmaze/crail',
     author='David Maze',
