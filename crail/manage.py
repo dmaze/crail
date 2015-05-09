@@ -4,6 +4,7 @@ import sys
 import yaml
 from .app import make_app
 from .models import Card, City, Contract, Good, World, db
+from flask.ext.assets import ManageAssets
 from flask.ext.migrate import MigrateCommand
 from flask.ext.script import Manager
 from flask.ext.script.commands import InvalidCommand
@@ -11,6 +12,7 @@ from sqlalchemy.orm.exc import NoResultFound
 
 
 manager = Manager(make_app)
+manager.add_command('assets', ManageAssets)
 manager.add_command('db', MigrateCommand)
 
 

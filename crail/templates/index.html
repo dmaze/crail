@@ -6,14 +6,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>Crail</title>
-        {%- set css = [
-            'bootstrap/dist/css/bootstrap.css',
-            'bootstrap/dist/css/bootstrap-theme.css'
-        ] %}
-        {%- for filename in css %}
-        <link rel="stylesheet"
-              href="{{ url_for('bower.static', filename=filename) }}">
-        {% endfor %}
+        {%- assets "crail_css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}">
+        {%- endassets %}
     </head>
     <body>
         {% include 'navbar.html' %}
@@ -29,16 +24,8 @@
         {% include 'contract.html' %}
         {% include 'contract-confirm.html' %}
         {% include 'contract-discard.html' %}
-        {%- set js = [
-            'jquery/dist/jquery.js',
-            'bootstrap/dist/js/bootstrap.js',
-            'underscore/underscore.js',
-            'js-cookie/src/js.cookie.js',
-        ]
-        %}
-        {%- for filename in js %}
-        <script src="{{ url_for('bower.static', filename=filename) }}"></script>
-        {%- endfor %}
-        <script src="{{ url_for('static', filename='crail.js') }}"></script>
+        {%- assets "crail_js" %}
+        <script src="{{ ASSET_URL }}"></script>
+        {%- endassets %}
     </body>
 </html>

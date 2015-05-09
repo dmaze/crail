@@ -4,3 +4,5 @@ __pycache__
 bower_components
 node_modules
 vpy
+.webassets-cache
+static/gen

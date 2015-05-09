@@ -1,12 +1,23 @@
 from .actions import draw_card, get_or_create_player
 from .globals import current_player
-from .models import Card, Contract, db, Game, Player, World
+from .models import Card, Contract, db, Game, World
 from flask import Blueprint, abort, jsonify, render_template, request, \
     session
-from sqlalchemy.orm.exc import NoResultFound
+from flask.ext.assets import Bundle
 
 
 crail_bp = Blueprint('crail', __name__)
+
+crail_js = Bundle('bower_components/jquery/dist/jquery.js',
+                  'bower_components/bootstrap/dist/js/bootstrap.js',
+                  'bower_components/underscore/underscore.js',
+                  'bower_components/js-cookie/src/js.cookie.js',
+                  'crail.js',
+                  filters='rjsmin', output='gen/packed.js')
+
+crail_css = Bundle('bower_components/bootstrap/dist/css/bootstrap.css',
+                   'bower_components/bootstrap/dist/css/bootstrap-theme.css',
+                   filters='cssmin', output='gen/packed.css')
 
 
 @crail_bp.route('/')

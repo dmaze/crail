@@ -15,8 +15,9 @@ setup(
     keywords=[],
     packages=find_packages(),
     install_requires=[
+        'cssmin',
         'flask',
-        'flask-bower',
+        'flask-assets',
         # This uses Alembic as its migration engine
         'flask-migrate',
         'flask-script',

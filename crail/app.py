@@ -2,12 +2,12 @@
 import os
 
 from flask import Flask
-from flask.ext.bower import Bower
+from flask.ext.assets import Environment
 
 from .models import db, migrate
-from .routes import crail_bp
+from .routes import crail_bp, crail_css, crail_js
 
-bower = Bower()
+assets = Environment()
 
 
 def make_app():
@@ -24,7 +24,9 @@ def make_app():
                      directory=os.path.join(os.path.dirname(__file__),
                                             'migrations'))
 
-    bower.init_app(app)
+    assets.init_app(app)
+    assets.register('crail_js', crail_js)
+    assets.register('crail_css', crail_css)
 
     app.register_blueprint(crail_bp)
 
