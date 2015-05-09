@@ -1,4 +1,10 @@
-'''Top-level Flask application.'''
+"""Top-level Flask application.
+
+.. Copyright © 2015, David Maze
+
+.. autofunction:: make_app
+
+"""
 import os
 
 from flask import Flask
@@ -7,10 +13,16 @@ from flask.ext.assets import Environment
 from .models import db, migrate
 from .routes import crail_bp, crail_css, crail_js
 
-assets = Environment()
+assets = Environment()  # pylint: disable=invalid-name
 
 
 def make_app():
+    """Create the fully-assembled Flask application.
+
+    This sets up the application, binding the database, migrations,
+    Web assets, and the actual routes all together into one object.
+
+    """
     app = Flask(__name__)
     app.config.from_object('crail.settings')
     app.config.from_envvar('CRAIL_SETTINGS', silent=True)

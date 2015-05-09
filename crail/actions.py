@@ -1,7 +1,16 @@
-'''UI-agnostic actions.'''
+"""UI-agnostic actions.
+
+.. Copyright © 2015, David Maze
+
+.. autofunction:: draw_card
+.. autofunction:: get_or_create_player
+
+"""
 from random import choice
 
-from .models import Card, db, PlayedCard, Player
+from .models import Card, PlayedCard, Player, db
+from sqlalchemy.orm.exc import NoResultFound
+
 
 def get_or_create_player(name):
     '''Get a player with a given name.
@@ -30,13 +39,13 @@ def draw_card(game):
     '''
     cards = (Card.query
              .filter_by(world=game.world)
-             .filter(~Card.played_cards.any(PlayedCard.game==game))
+             .filter(~Card.played_cards.any(PlayedCard.game == game))
              .all())
     if not cards:
         # reshuffle
         PlayedCard.query.filter_by(game=game).delete()
         cards = Card.query.filter_by(world=game.world).all()
     card = choice(cards)
-    pc = PlayedCard(game=game, card=card)
-    db.session.add(pc)
+    played_card = PlayedCard(game=game, card=card)
+    db.session.add(played_card)
     return card

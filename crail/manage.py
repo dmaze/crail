@@ -1,5 +1,36 @@
 #!/usr/bin/env python3
-'''Debug server.'''
+"""Command-line helper tool.
+
+.. Copyright © 2015, David Maze
+
+There are three important things you can do with this tool.
+
+
+1. Create the specified database, or migrate from the previous schema.
+
+   .. code-block:: sh
+
+      crail_manage db upgrade
+
+1. Load a YAML file of game data into the database.
+
+   .. code-block:: sh
+
+      crail_manage game game.yaml
+
+1. Run the debug server.
+
+   .. code-block:: sh
+
+      crail_manage runserver
+
+To run a production server, use a standard WSGI server, e.g.
+
+.. code-block:: sh
+
+   gunicorn crail.wsgi
+
+"""
 import sys
 import yaml
 from .app import make_app
@@ -11,7 +42,8 @@ from flask.ext.script.commands import InvalidCommand
 from sqlalchemy.orm.exc import NoResultFound
 
 
-manager = Manager(make_app)
+#: Flask-Script CLI instance.
+manager = Manager(make_app)  # pylint: disable=invalid-name
 manager.add_command('assets', ManageAssets)
 manager.add_command('db', MigrateCommand)
 
@@ -19,8 +51,8 @@ manager.add_command('db', MigrateCommand)
 @manager.option('filename')
 def game(filename):
     """Import a YAML file of game data."""
-    with open(filename, 'r') as f:
-        contents = yaml.safe_load(f)
+    with open(filename, 'r') as game_file:
+        contents = yaml.safe_load(game_file)
 
     world_name = contents['name']
     try:
@@ -76,6 +108,7 @@ def game(filename):
 
 
 def main():
+    """Run the :program:`crail_manage` program."""
     try:
         manager.run()
     except InvalidCommand as exc:
