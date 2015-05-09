@@ -1,0 +1,17 @@
+{# -*- engine: django -*- #}
+{% extends 'dialog.html' %}
+{% set tag='contract' %}
+{% from 'macros.html' import glyphicon %}
+{% block title %}Select contract{% endblock %}
+{% block body %}
+    <p id="{{ tag }}-card-id" class="hidden"></p>
+    <div class="list-group" id="{{ tag }}-list" data-dismiss="modal">
+        <a href="#" class="list-group-item" id="{{ tag }}-discard">
+            {{ glyphicon('trash') }} Discard this card
+        </a>
+    </div>
+{% endblock %}
+{# No "OK" button, every item in the list is clickable #}
+{% block footer %}
+    <button class="btn btn-default" data-dismiss="modal">Cancel</button>
+{% endblock %}

@@ -1,0 +1,9 @@
+{# -*- engine: django -*- #}
+{% extends 'dialog.html' %}
+{% set tag='discard' %}
+    {% block title %}Discard{% endblock %}
+    {% block body %}
+        <p>Really discard:</p>
+        <p id="{{ tag }}-id" class="hidden"></p>
+        <p id="{{ tag }}-description"></p>
+    {% endblock %}

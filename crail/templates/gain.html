@@ -1,0 +1,18 @@
+{# -*- engine: django -*- #}
+{% extends 'dialog.html' %}
+{% set tag='gain' %}
+    {% block title %}Gain money{% endblock %}
+    {% block body %}
+        <form>
+            <div class="form-group">
+                <label for="{{ tag }}-amount">Amount</label>
+                <input type="number" min="0" pattern="[0-9]*"
+                       inputmode="numeric" class="form-control"
+                       id="{{ tag }}-amount" aria-describedby="{{ tag }}-help">
+                <span id="{{ tag }}-help" class="help-block">
+                    Money gained from sources other than contracts,
+                    such as from other players using your rails
+                </span>
+            </div>
+        </form>
+    {% endblock %}

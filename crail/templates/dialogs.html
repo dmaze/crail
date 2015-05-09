@@ -1,0 +1,94 @@
+{# -*- engine: django -*- #}
+<div class="modal" id="gain-modal" role="dialog" aria-labelledby="gain-title">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="gain-title">Gain money</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="gain-amount">Amount</label>
+                        <input type="number" min="0" pattern="[0-9]*"
+                               inputmode="numeric" class="form-control"
+                               id="gain-amount" aria-describedby="gain-help">
+                        <span id="gain-help" class="help-block">
+                            Money gained from sources other than contracts,
+                            such as from other players using your rails
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="button" class="btn btn-default"
+                        data-dismiss="modal">Cancel</button>
+                <button class="button" class="btn btn-primary"
+                        data-dismiss="modal" id="gain-action">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="spend-modal" role="dialog" aria-labelledby="spend-title">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="spend-title">Spend money</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="spend-amount">Amount</label>
+                        <input type="number" min="0" pattern="[0-9]*"
+                               inputmode="numeric" class="form-control"
+                               id="spend-amount" aria-describedby="spend-help">
+                        <span id="spend-help" class="help-block">
+                            Money spent on anything, including construction
+                            and paying other players to use their rails
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="button" class="btn btn-default"
+                        data-dismiss="modal">Cancel</button>
+                <button class="button" class="btn btn-primary"
+                        data-dismiss="modal" id="spend-action">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="discard-modal" role="dialog"
+     aria-labelledby="discard-title">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="discard-title">Discard</h4>
+            </div>
+            <div class="modal-body">
+                <p>Really discard:</p>
+                <p id="discard-id" class="hidden"></p>
+                <p id="discard-description"></p>
+            </div>
+            <div class="modal-footer">
+                <button class="button" class="btn btn-default"
+                        data-dismiss="modal">Cancel</button>
+                <button class="button" class="btn btn-primary"
+                        data-dismiss="modal" id="discard-action">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

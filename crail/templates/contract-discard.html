@@ -1,0 +1,15 @@
+{# -*- engine: django -*- #}
+{% extends 'dialog.html' %}
+{% set tag='contract-discard' %}
+{% block title %}Discard{% endblock %}
+{% block body %}
+    <p>Really discard:</p>
+    <p id="{{ tag }}-id" class="hidden"></p>
+    <p id="{{ tag }}-description"></p>
+{% endblock %}
+{# Take manual action on the "cancel" button #}
+{% block footer %}
+    <button class="btn btn-default" id="{{ tag }}-cancel">Cancel</button>
+    <button class="btn btn-primary" data-dismiss="modal"
+            id="{{ tag }}-action">OK</button>
+{% endblock %}

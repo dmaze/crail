@@ -1,0 +1,6 @@
+.*~
+__pycache__
+\.egg-info
+bower_components
+node_modules
+vpy

@@ -1,0 +1,18 @@
+{# -*- engine: django -*- #}
+{% extends 'dialog.html' %}
+{% set tag='spend' %}
+    {% block title %}Spend money{% endblock %}
+    {% block body %}
+        <form>
+            <div class="form-group">
+                <label for="{{ tag }}-amount">Amount</label>
+                <input type="number" min="0" pattern="[0-9]*"
+                       inputmode="numeric" class="form-control"
+                       id="{{ tag }}-amount" aria-describedby="{{ tag }}-help">
+                <span id="{{ tag }}-help" class="help-block">
+                    Money spent on anything, including construction
+                    and paying other players to use their rails
+                </span>
+            </div>
+        </form>
+    {% endblock %}

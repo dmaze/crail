@@ -1,0 +1,42 @@
+{# -*- engine: django -*- #}
+<div class="hidden" id="main-page">
+    <div class="form-horizontal">
+        <div class="form-group">
+            <label for="money"
+                   class="col-xs-4 col-sm-2 col-md-2 col-lg-1 control-label">
+                You have
+            </label>
+            <div class="col-xs-8 col-sm-4 col-md-2 col-lg-3">
+                <div class="input-group">
+                    <div class="input-group-addon">$</div>
+                    <input type="number" class="form-control" id="money"
+                           readonly>
+                </div>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-4">
+                <button class="btn btn-default btn-block" role="button"
+                        data-toggle="modal" data-target="#gain-modal">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Gain
+                </button>
+            </div>
+            <div class="col-xs-6 col-sm-3 col-md-4">
+                <button class="btn btn-default btn-block" role="button"
+                        data-toggle="modal" data-target="#spend-modal">
+                    <span class="glyphicon glyphicon-minus"></span>
+                    Spend
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="list-group" id="cards-list">
+                <a href="#" class="list-group-item" id="draw-card-action">
+                    <span class="glyphicon glyphicon-gift"></span>
+                    Draw another card
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

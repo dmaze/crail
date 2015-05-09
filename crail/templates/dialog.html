@@ -1,0 +1,29 @@
+{# -*- engine: django -*- #}
+<div class="modal" id="{{ tag }}-modal" role="dialog"
+     aria-labelledby="{{ tag }}-title">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="{{ tag }}-title">
+                    {%- block title %}{% endblock -%}
+                </h4>
+            </div>
+            <div class="modal-body">
+                {%- block body %}{% endblock -%}
+            </div>
+            <div class="modal-footer">
+                {%- block footer %}
+                <button class="btn btn-default"
+                        data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary"
+                        data-dismiss="modal"
+                        id="{{ tag }}-action">OK</button>
+                {%- endblock %}
+            </div>
+        </div>
+    </div>
+</div>
