@@ -26,6 +26,10 @@ setup(
         'PyYAML',
     ],
     package_data={
+        'crail.static': [('*/') * depth + '*.' + suffix
+                         for depth in range(5)
+                         for suffix in ['js', 'css']],
+        'crail.templates': ['*.html'],
     },
     entry_points={
         'console_scripts': [

@@ -33,7 +33,6 @@ and written to the underlying database.
    :members:
 
 """
-from flask.ext.login import UserMixin
 from flask.ext.migrate import Migrate
 from flask.ext.sqlalchemy import SQLAlchemy
 
@@ -269,7 +268,7 @@ player_card = db.Table(
 )
 
 
-class Player(db.Model, UserMixin):
+class Player(db.Model):
     """State for a single player.
 
     .. todo::

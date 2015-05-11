@@ -16,16 +16,27 @@ from .routes import crail_bp, crail_css, crail_js
 assets = Environment()  # pylint: disable=invalid-name
 
 
-def make_app():
+def make_app(config=None):
     """Create the fully-assembled Flask application.
 
     This sets up the application, binding the database, migrations,
     Web assets, and the actual routes all together into one object.
 
+    If the environment variable :env:`CRAIL_SETTINGS` is set and the
+    `config` parameter is :const:`None`, then the file named in the
+    environment variable (if any) is loaded over the default settings.
+    If `config` is not :const:`None` then that is loaded instead, and
+    :env:`CRAIL_SETTINGS` is ignored.
+
+    :param dict config: optional extra configuration parameters
+
     """
-    app = Flask(__name__)
+    app = Flask('crail')
     app.config.from_object('crail.settings')
-    app.config.from_envvar('CRAIL_SETTINGS', silent=True)
+    if config is None:
+        app.config.from_envvar('CRAIL_SETTINGS', silent=True)
+    else:
+        app.config.update(config)
 
     db.init_app(app)
 

@@ -36,6 +36,10 @@ def draw_card(game):
     Adds the card to the played-cards table (and may clear that table out
     to reshuffle it), so intrinsically causes a mutation.
 
+    .. todo:: This needs to take into account the possibility that cards
+              are in players' hands, and not put them back during the
+              reshuffle.
+
     '''
     cards = (Card.query
              .filter_by(world=game.world)

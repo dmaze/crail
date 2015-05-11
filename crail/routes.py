@@ -141,9 +141,9 @@ def login():
 
     # Win, find or create a player
     player = get_or_create_player(name)
-    session['player_id'] = player.id
-
     db.session.commit()
+
+    session['player_id'] = player.id
     return player_state()
 
 
@@ -314,8 +314,9 @@ def discard():
         abort(400)
 
     card = Card.query.get(card_id)
-    player.cards.remove(card)
-    db.session.commit()
+    if card is not None and card in player.cards:
+        player.cards.remove(card)
+        db.session.commit()
     return player_state()
 
 
